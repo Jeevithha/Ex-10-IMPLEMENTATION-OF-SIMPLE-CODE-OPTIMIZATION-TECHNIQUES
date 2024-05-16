@@ -1,46 +1,40 @@
 # Ex-10-IMPLEMENTATION OF SIMPLE CODE OPTIMIZATION TECHNIQUES
-# NAME: JEEVITHA S
-# REGISTER NUMBER: 212222100016
-# Date:10.04.2024
-# Aim:
+## NAME: JEEVITHA S
+## REGISTER NUMBER: 212222100016
+## Date:10.04.2024
+## Aim:
 To write a C program to implement simple code optimization techniques such as Common subexpression elimination and Dead Code elimination.
-# ALGORITHM :
+## ALGORITHM :
 1. Start the program.
 2. The ‘L’values and their corresponding ‘R’ values are given as input.
 3. After common subexpression elimination, the subexpressions that are common are identified and are removed.
 4. After Dead code elimination, the subexpression that is of no use can be identified and is eliminated.
 5. Stop the program.
-# PROGRAM
+## PROGRAM
 ```
 #include <stdio.h>
 #include <string.h>
-
 struct op {
     char l;
     char r[20];
 } op[10], pr[10];
-
 int main() {
     int a, i, k, j, n, z = 0, m, q;
     char *p, *l;
     char temp, t;
     char *tem;
-
     printf("Enter the Number of Values: ");
     scanf("%d", &n);
-
     for (i = 0; i < n; i++) {
         printf("left: ");
         scanf(" %c", &op[i].l); // Notice the space before %c to consume the newline character
         printf("\tright: ");
         scanf("%s", op[i].r);
     }
-
     printf("Intermediate Code\n");
     for (i = 0; i < n; i++) {
         printf("%c=%s\n", op[i].l, op[i].r);
     }
-
     for (i = 0; i < n - 1; i++) {
         temp = op[i].l;
         for (j = 0; j < n; j++) {
@@ -52,16 +46,13 @@ int main() {
             }
         }
     }
-
     pr[z].l = op[n - 1].l;
     strcpy(pr[z].r, op[n - 1].r);
     z++;
-
     printf("\nAfter Dead Code Elimination\n");
     for (k = 0; k < z; k++) {
         printf("%c\t=%s\n", pr[k].l, pr[k].r);
     }
-
     for (m = 0; m < z; m++) {
         tem = pr[m].r;
         for (j = m + 1; j < z; j++) {
@@ -80,12 +71,10 @@ int main() {
             }
         }
     }
-
     printf("Eliminate Common Expression\n");
     for (i = 0; i < z; i++) {
         printf("%c=%s\n", pr[i].l, pr[i].r);
     }
-
     for (i = 0; i < z; i++) {
         for (j = i + 1; j < z; j++) {
             q = strcmp(pr[i].r, pr[j].r);
@@ -95,21 +84,17 @@ int main() {
             }
         }
     }
-
     printf("Optimized Code\n");
     for (i = 0; i < z; i++) {
         if (pr[i].l!= '\0') {
             printf("%c=%s\n", pr[i].l, pr[i].r);
         }
     }
-
     return 0;
 }
 ```
-
-# OUTPUT
+## OUTPUT
 <img width="370" alt="image" src="https://github.com/manomadhivanan/Ex-10-IMPLEMENTATION-OF-SIMPLE-CODE-OPTIMIZATION-TECHNIQUES/assets/115543366/cf2ab34e-540e-4d2c-a77e-15b8ebbe7633">
 
-# RESULT
+## RESULT
 The simple code optimization techniques such as common subexpression elimination and dead code elimination are implemented successfully and the output is verified.
-
